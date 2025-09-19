@@ -2,16 +2,18 @@ package proSky.EmployeeBook.model;
 
 import java.util.Objects;
 
+import static org.apache.commons.lang3.StringUtils.capitalize;
+
 public class Employee {
-    private  String firstName;
-    private  String lastName;// фамилия
+    private String firstName;
+    private String lastName;// фамилия
     private int dep;
     private float salary;
 
     // Конструктор
     public Employee(String firstName, String lastName, int dep, float salary) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstName = capitalize(firstName.toLowerCase());
+        this.lastName = capitalize(lastName.toLowerCase());
         this.dep = dep;
         this.salary = salary;
     }
@@ -54,8 +56,8 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return dep == employee.dep && Float.compare(employee.salary, salary) == 0
-                && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName);
+        return dep == employee.dep && Float.compare(employee.salary, salary) == 0 && Objects.equals(firstName,
+                employee.firstName) && Objects.equals(lastName, employee.lastName);
     }
 
     @Override
@@ -65,9 +67,7 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" + "firstName='" + firstName + '\'' + ", lastName='"
-                + lastName + '\'' + ", departament="
-                + dep + ", salary=" + salary + '}';
+        return "Employee{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", departament=" + dep + ", salary=" + salary + '}';
     }
 }
 
